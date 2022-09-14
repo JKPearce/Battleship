@@ -1,0 +1,36 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "Battleship board game using javascript, html, css focus on TDD and good coding practices",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "watch": "webpack --progress --watch",
+    "build": "webpack"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JKPearce/Battleship.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JKPearce/Battleship/issues"
+  },
+  "homepage": "https://github.com/JKPearce/Battleship#readme",
+  "devDependencies": {
+    "@babel/core": "^7.19.0",
+    "@babel/preset-env": "^7.19.0",
+    "babel-jest": "^29.0.3",
+    "jest": "^29.0.3",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
