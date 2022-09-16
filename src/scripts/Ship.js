@@ -18,7 +18,7 @@ export default class Ship {
     this.hits.push(position);
   }
 
-  isSunk(){
+  isSunk() {
     return this.hits.length === this.length;
   }
 }
