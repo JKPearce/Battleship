@@ -12,3 +12,8 @@ beforeEach(() => {
 test("Places a ship", () => {
   expect(board.placeShip(0,0, ship)).toEqual(true);
 });
+
+test("Able to receive attack", () => {
+    board.placeShip(1,1, ship);
+    expect(board.receiveAttack(1, 1)).toBe(true);
+})
