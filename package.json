@@ -4,7 +4,7 @@
   "description": "Battleship board game using javascript, html, css focus on TDD and good coding practices",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --watch",
     "watch": "webpack --progress --watch",
     "build": "webpack"
   },
