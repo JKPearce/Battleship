@@ -52,8 +52,6 @@ export default class Gameboard {
       if (ship.isSunk()) finished = true;
       else finished = false;
     });
-
-    console.log(finished);
     return finished;
   }
 }
