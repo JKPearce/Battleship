@@ -3,6 +3,7 @@ const GRID_SIZE = 7;
 export default class Gameboard {
   constructor() {
     this.boardGrid = [];
+    this.ships = [];
     this.init();
   }
 
@@ -16,9 +17,12 @@ export default class Gameboard {
   }
 
   placeShip(row, col, ship) {
+    if (row + ship.getLength() > GRID_SIZE || col > GRID_SIZE) return;
+
     for (let i = 0; i < ship.getLength(); i++) {
       this.boardGrid[row + i][col] = ship;
     }
+    this.ships.push(ship);
     return true;
   }
 
@@ -36,8 +40,20 @@ export default class Gameboard {
       }
       this.boardGrid[row][col].hit(hitLocation);
       return true;
-    }else{
-        //place a miss
+    } else {
+      this.boardGrid[row][col] = "miss";
+      return true;
     }
+  }
+
+  checkBoard() {
+    let finished = false;
+    this.ships.forEach((ship) => {
+      if (ship.isSunk()) finished = true;
+      else finished = false;
+    });
+
+    console.log(finished);
+    return finished;
   }
 }
