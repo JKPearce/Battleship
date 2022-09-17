@@ -13,6 +13,6 @@ test("Get player name", () => {
 });
 
 test("Player can make attack", () => {
-  expect(player1.makeAttack(player2.board, 1, 1)).toBe(true);
+  expect(player1.makeAttack(player2, 1, 1)).toBe(false);
   expect(player2.board.boardGrid[1][1]).toBe("miss");
 });

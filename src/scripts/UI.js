@@ -22,7 +22,18 @@ export default class UI {
       row.classList.add("row");
       board.appendChild(row);
       for (let j = 0; j < this.player1.board.gridSize; j++) {
-        row.appendChild(this.createCell(i, j));
+        const cell = this.createCell(i, j);
+        if (name === "board2") {
+          cell.addEventListener(
+            "click",
+            (e) => {
+              if (!this.player1.getTurn()) return;
+              this.updateCell(e, this.player1.makeAttack(this.player2, i, j));
+            },
+            { once: true }
+          );
+        }
+        row.appendChild(cell);
       }
     }
     return board;
@@ -36,5 +47,11 @@ export default class UI {
     return element;
   }
 
-  updateGrid(player) {}
+  updateCell(e, successful) {
+    if (successful) {
+      e.target.classList.add("hit");
+    } else {
+      e.target.classList.add("miss");
+    }
+  }
 }

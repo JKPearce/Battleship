@@ -32,7 +32,7 @@ html {
 
         &#board2 {
           .cell {
-            &:hover {
+            &:hover:not(.hit, .miss) {
               background-color: #ccc;
               cursor: crosshair;
             }
@@ -44,6 +44,12 @@ html {
 
           .cell {
             border: 1px solid grey;
+          }
+          .hit {
+            background-color: green;
+          }
+          .miss {
+            background-color: red;
           }
         }
       }

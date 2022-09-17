@@ -21,7 +21,7 @@ test("Able to receive attack on ship", () => {
 test("Able to receive attack and place miss", () => {
   board.placeShip(2, 7, ship);
 
-  expect(board.receiveAttack(1, 1)).toBe(true);
+  expect(board.receiveAttack(1, 1)).toBe(false);
   expect(board.boardGrid[1][1]).toBe("miss");
 });
 

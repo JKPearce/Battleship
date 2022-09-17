@@ -26,8 +26,14 @@ export default class Gameboard {
   }
 
   receiveAttack(row, col) {
-    if (row < 0 || row >= this.gridSize || col < 0 || col >= this.gridSize)
-      return false;
+    if (
+      row < 0 ||
+      row >= this.gridSize ||
+      col < 0 ||
+      col >= this.gridSize ||
+      this.boardGrid[row][col] === "miss"
+    )
+      return;
 
     if (this.boardGrid[row][col]) {
       let i = 1;
@@ -41,7 +47,7 @@ export default class Gameboard {
       return true;
     } else {
       this.boardGrid[row][col] = "miss";
-      return true;
+      return false;
     }
   }
 

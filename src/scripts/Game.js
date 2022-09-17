@@ -22,6 +22,8 @@ function start() {
   player2.board.placeShip(1, 4, new Ship("Submarine", 3));
   player2.board.placeShip(4, 9, new Ship("Patrol Boat", 2));
 
+  player1.setTurn(true);
+
   console.log(player1);
   console.log(player2);
 }
