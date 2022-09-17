@@ -1,23 +1,22 @@
-const GRID_SIZE = 10;
-
 export default class Gameboard {
   constructor() {
+    this.gridSize = 10;
     this.boardGrid = [];
     this.ships = [];
     this.init();
   }
 
   init() {
-    for (let i = 0; i < GRID_SIZE; i++) {
+    for (let i = 0; i < this.gridSize; i++) {
       this.boardGrid[i] = [];
-      for (let j = 0; j < GRID_SIZE; j++) {
+      for (let j = 0; j < this.gridSize; j++) {
         this.boardGrid[i][j] = null;
       }
     }
   }
 
   placeShip(row, col, ship) {
-    if (row + ship.getLength() > GRID_SIZE || col > GRID_SIZE) return;
+    if (row + ship.getLength() > this.gridSize || col > this.gridSize) return;
 
     for (let i = 0; i < ship.getLength(); i++) {
       this.boardGrid[row + i][col] = ship;
@@ -27,7 +26,7 @@ export default class Gameboard {
   }
 
   receiveAttack(row, col) {
-    if (row < 0 || row >= GRID_SIZE || col < 0 || col >= GRID_SIZE)
+    if (row < 0 || row >= this.gridSize || col < 0 || col >= this.gridSize)
       return false;
 
     if (this.boardGrid[row][col]) {

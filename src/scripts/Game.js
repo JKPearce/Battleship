@@ -1,9 +1,11 @@
+import UI from "./UI";
 import Player from "./Player";
 import Ship from "./Ship";
 
 function start() {
   const player1 = new Player("Player 1");
   const player2 = new Player("Computer");
+  const ui = new UI(player1, player2);
 
   //change from hardcoded to a foreach loop over an array of
   //objects of pre-defined ships asking user to place each one
