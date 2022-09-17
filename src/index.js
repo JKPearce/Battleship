@@ -1,3 +1,4 @@
+import { start } from "./scripts/Game";
 import "./styles/main.scss";
 
-console.log("test");
+start();
