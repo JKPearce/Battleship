@@ -29,9 +29,14 @@ export default class UI {
             (e) => {
               if (!this.player1.getTurn()) return;
               this.updateCell(e, this.player1.makeAttack(this.player2, i, j));
+              //function to make the bot attack here and update ui
+              //for now just setting player turn to true so you can keep clicking
+              this.player1.setTurn(true);
             },
             { once: true }
           );
+        } else if (this.player1.getItemFromGrid(i, j)) {
+          cell.classList.add("ship"); //temp to show pre-placed ships, remove once added user selected ships
         }
         row.appendChild(cell);
       }

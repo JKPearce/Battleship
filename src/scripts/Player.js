@@ -8,6 +8,8 @@ export default class Player {
   }
 
   makeAttack(opponent, row, col) {
+    this.turn = false;
+    opponent.setTurn(true);
     return opponent.board.receiveAttack(row, col);
   }
 
@@ -17,5 +19,9 @@ export default class Player {
 
   setTurn(turn) {
     this.turn = turn;
+  }
+
+  getItemFromGrid(row, col) {
+    return this.board.boardGrid[row][col];
   }
 }
