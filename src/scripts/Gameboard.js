@@ -1,4 +1,4 @@
-const GRID_SIZE = 7;
+const GRID_SIZE = 10;
 
 export default class Gameboard {
   constructor() {
