@@ -46,7 +46,7 @@ export default class Gameboard {
     }
   }
 
-  checkBoard() {
+  isGameOver() {
     let finished = false;
     this.ships.forEach((ship) => {
       if (ship.isSunk()) finished = true;

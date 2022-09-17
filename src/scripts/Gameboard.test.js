@@ -33,5 +33,5 @@ test("Check if there are still alive ships", () => {
   board.receiveAttack(3, 1);
   board.receiveAttack(4, 1);
 
-  expect(board.checkBoard()).toBe(true);
+  expect(board.isGameOver()).toBe(true);
 });
