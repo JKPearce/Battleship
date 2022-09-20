@@ -45,14 +45,14 @@ html {
           .cell {
             border: 1px solid grey;
           }
+          .ship {
+            background-color: black;
+          }
           .hit {
             background-color: green;
           }
           .miss {
             background-color: red;
-          }
-          .ship {
-            background-color: black;
           }
         }
       }

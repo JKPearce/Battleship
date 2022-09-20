@@ -32,7 +32,8 @@ export default class UI {
               this.updateBoard(this.player2, i, j);
               //function to make the bot attack here and update ui
               //for now just setting player turn to true so you can keep clicking
-              this.player1.setTurn(true);
+              this.botPlay();
+              // this.player1.setTurn(true);
             },
             { once: true }
           );
@@ -64,5 +65,22 @@ export default class UI {
         .getElementById(`${player.name}r${row}c${col}`)
         .classList.add("hit");
     }
+  }
+
+  botPlay() {
+    let num1 = this.randomNumberTo(10);
+    let num2 = this.randomNumberTo(10);
+    console.log(num1, num2);
+    while (this.player2.board.missGrid[num1][num2] !== "") {
+      num1 = this.randomNumberTo(10);
+      num2 = this.randomNumberTo(10);
+      console.log("recalculating", num1, num2);
+    }
+    this.player2.makeAttack(this.player1, num1, num2);
+    this.updateBoard(this.player1, num1, num2);
+  }
+
+  randomNumberTo(x) {
+    return Math.floor(Math.random() * x);
   }
 }
