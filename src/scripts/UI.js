@@ -7,28 +7,29 @@ export default class UI {
   }
 
   init() {
-    this.boardHTML.appendChild(this.createBoard("board1"));
-    this.boardHTML.appendChild(this.createBoard("board2"));
+    this.boardHTML.appendChild(this.createBoard("board1", this.player1));
+    this.boardHTML.appendChild(this.createBoard("board2", this.player2));
   }
 
-  createBoard(name) {
+  createBoard(name, player) {
     const board = document.createElement("div");
     board.id = name;
     board.classList.add("board");
 
     for (let i = 0; i < this.player1.board.gridSize; i++) {
       const row = document.createElement("div");
-      row.id = `row${i}`;
+      row.id = `${player.name}-row${i}`;
       row.classList.add("row");
       board.appendChild(row);
       for (let j = 0; j < this.player1.board.gridSize; j++) {
-        const cell = this.createCell(i, j);
+        const cell = this.createCell(i, j, player.name);
         if (name === "board2") {
           cell.addEventListener(
             "click",
             (e) => {
               if (!this.player1.getTurn()) return;
-              this.updateCell(e, this.player1.makeAttack(this.player2, i, j));
+              this.player1.makeAttack(this.player2, i, j);
+              this.updateBoard(this.player2, i, j);
               //function to make the bot attack here and update ui
               //for now just setting player turn to true so you can keep clicking
               this.player1.setTurn(true);
@@ -44,19 +45,24 @@ export default class UI {
     return board;
   }
 
-  createCell(row, cell) {
+  createCell(row, col, name) {
     const element = document.createElement("div");
     element.classList.add("cell");
-    element.id = `row${row}-cell${cell}`;
+    element.id = `${name}r${row}c${col}`;
 
     return element;
   }
 
-  updateCell(e, successful) {
-    if (successful) {
-      e.target.classList.add("hit");
+  updateBoard(player, row, col) {
+    if (player.board.missGrid[row][col] === "") return;
+    if (player.board.missGrid[row][col] === "miss") {
+      document
+        .getElementById(`${player.name}r${row}c${col}`)
+        .classList.add("miss");
     } else {
-      e.target.classList.add("miss");
+      document
+        .getElementById(`${player.name}r${row}c${col}`)
+        .classList.add("hit");
     }
   }
 }
