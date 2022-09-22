@@ -11,11 +11,15 @@ beforeEach(() => {
 
 test("Places a ship", () => {
   expect(board.placeShip(0, 0, ship)).toEqual(true);
+  expect(board.ships.length).toEqual(1);
+  expect(board.ships[0].name).toEqual("Battleship");
+  expect(board.ships[0]).toBe(ship);
 });
 
 test("Able to receive attack on ship", () => {
   board.placeShip(1, 1, ship);
   expect(board.receiveAttack(1, 1)).toBe(true);
+  expect(board.missGrid[1][1]).toBe("hit");
 });
 
 test("Able to receive attack and place miss", () => {

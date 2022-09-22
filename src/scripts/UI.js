@@ -30,10 +30,7 @@ export default class UI {
               if (!this.player1.getTurn()) return;
               this.player1.makeAttack(this.player2, i, j);
               this.updateBoard(this.player2, i, j);
-              //function to make the bot attack here and update ui
-              //for now just setting player turn to true so you can keep clicking
               this.botPlay();
-              // this.player1.setTurn(true);
             },
             { once: true }
           );
