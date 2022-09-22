@@ -65,6 +65,15 @@ export default class UI {
   }
 
   botPlay() {
+    if (this.player1.board.isGameOver()) {
+      //display winner modal with reset button and player name
+      console.log("p1 win");
+      return;
+    } else if (this.player2.board.isGameOver()) {
+      console.log("cpu win");
+      return;
+    }
+
     let num1 = this.randomNumberTo(10);
     let num2 = this.randomNumberTo(10);
     console.log(num1, num2);

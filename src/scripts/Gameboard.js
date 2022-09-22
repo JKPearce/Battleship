@@ -57,11 +57,6 @@ export default class Gameboard {
   }
 
   isGameOver() {
-    let finished = false;
-    this.ships.forEach((ship) => {
-      if (ship.isSunk()) finished = true;
-      else finished = false;
-    });
-    return finished;
+    return this.ships.every((ship) => ship.isSunk());
   }
 }
