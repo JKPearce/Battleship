@@ -7,6 +7,7 @@ export default class UI {
   }
 
   init() {
+    this.boardHTML.innerHTML = "";
     this.boardHTML.appendChild(this.createBoard("board1", this.player1));
     this.boardHTML.appendChild(this.createBoard("board2", this.player2));
   }
@@ -66,18 +67,19 @@ export default class UI {
 
   botPlay() {
     if (this.player1.board.isGameOver()) {
-      //display winner modal with reset button and player name
-      console.log("p1 win");
-      return;
-    } else if (this.player2.board.isGameOver()) {
+      this.displayWinner(this.player2);
       console.log("cpu win");
+      return;
+    }
+    if (this.player2.board.isGameOver()) {
+      this.displayWinner(this.player1);
+      console.log("p1 win");
       return;
     }
 
     let num1 = this.randomNumberTo(10);
     let num2 = this.randomNumberTo(10);
-    console.log(num1, num2);
-    while (this.player2.board.missGrid[num1][num2] !== "") {
+    while (this.player1.board.missGrid[num1][num2] !== "") {
       num1 = this.randomNumberTo(10);
       num2 = this.randomNumberTo(10);
       console.log("recalculating", num1, num2);
@@ -88,5 +90,11 @@ export default class UI {
 
   randomNumberTo(x) {
     return Math.floor(Math.random() * x);
+  }
+
+  displayWinner(player) {
+    const overlay = document.getElementById("winnerOverlay");
+    overlay.classList.toggle("show");
+    overlay.firstChild.textContent = `${player.name} Wins!`;
   }
 }
